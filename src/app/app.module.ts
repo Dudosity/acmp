@@ -24,6 +24,7 @@ import {
   NbContextMenuModule,
   NbMenuModule,
   NbAccordionModule,
+  NbTreeGridModule,
 } from '@nebular/theme';
 
 import { FormsModule as ngFormsModule } from '@angular/forms';
@@ -32,13 +33,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { ComponentsComponent } from './components/components.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainComponent,
-    DashboardComponent
+    DashboardComponent,
+    ComponentsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { NgxChartsModule }from '@swimlane/ngx-charts';
     NbContextMenuModule,
     NbMenuModule.forRoot(),
     NbAccordionModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NbTreeGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

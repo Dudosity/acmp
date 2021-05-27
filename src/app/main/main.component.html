@@ -1,0 +1,71 @@
+<nb-layout>
+
+  <nb-layout-header fixed >
+    <button nbButton  shape="rectangle" status="primary"(click)="hide_sidebar()" style="position: absolute; left: 30pt;">SIDEBAR</button>
+    <h4 style="padding-left: 110pt">Автоматизированная система сониторинга и реагирования</h4>
+    <button outline nbButton [nbContextMenu]="items" style="position: absolute; right: 50pt;">
+      Show Menu
+    </button>
+  </nb-layout-header>
+
+  <nb-sidebar>
+    <h5 style="text-align: center">Project list</h5>
+    <nb-accordion multi>
+      <nb-accordion-item style="border-color: #4883e3; /* Цвет границы */
+    border-style: solid; /* Стиль границы */
+    padding: 2px; /* Поля вокруг текста */" expanded>
+        <nb-accordion-item-header>
+          Your application 1
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-card accent="info">
+            <nb-card-body>
+              Njinx
+            </nb-card-body>
+          </nb-card>
+          <nb-card>
+            <nb-card-body>
+              Red hat
+            </nb-card-body>
+          </nb-card>
+          <nb-card>
+            <nb-card-body>
+              MySql
+            </nb-card-body>
+          </nb-card>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+      <nb-accordion-item>
+        <nb-accordion-item-header>
+          Your application 2
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-card>
+            <nb-card-body>
+              Njinx
+            </nb-card-body>
+          </nb-card>
+          <nb-card>
+            <nb-card-body>
+              Red hat
+            </nb-card-body>
+          </nb-card>
+          <nb-card>
+            <nb-card-body>
+              MySql
+            </nb-card-body>
+          </nb-card>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+
+    </nb-accordion>
+
+  </nb-sidebar>
+
+  <nb-layout-column class="colored-column-basic" withScroll>
+    <app-components></app-components>
+
+  </nb-layout-column>
+</nb-layout>

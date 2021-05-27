@@ -1,0 +1,76 @@
+<div class="card-row">
+  <div class="card-col">
+    <nb-card size="medium">
+      <nb-card-header>Metrics</nb-card-header>
+      <nb-card-body>
+        <ngx-charts-pie-grid
+        [results]="saleData"
+        [view]="[1000,200]">
+      </ngx-charts-pie-grid>
+      </nb-card-body>
+    </nb-card>
+    <nb-card size="medium">
+      <nb-card-header>
+        Table metrics
+      </nb-card-header>
+      <nb-card-body>
+
+        <table [nbTreeGrid]="data" equalColumnsWidth>
+
+          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+          <ng-container [nbTreeGridColumnDef]="customColumn">
+            <td nbTreeGridCell *nbTreeGridCellDef="let row">
+
+              <nb-tree-grid-row-toggle
+                [expanded]="row.expanded"
+                *ngIf="row.data.kind === 'dir'">
+              </nb-tree-grid-row-toggle>
+
+              {{row.data.name}}
+
+            </td>
+          </ng-container>
+
+          <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+            <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+          </ng-container>
+
+        </table>
+
+
+
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="card-col">
+    <nb-card size="medium">
+      <nb-card-header>Detailed pie</nb-card-header>
+      <nb-card-body>
+        <ngx-charts-pie-chart
+        [results]="saleData"
+        [legend]="true"
+        [legendTitle]="'Product Sale Report'"
+        [view]="[1000,400]"
+        [labels]="true" >
+      </ngx-charts-pie-chart> </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="card-row">
+  <div class="card-col">
+    <nb-card size="tiny">
+      <nb-card-header>Tiny card</nb-card-header>
+    </nb-card>
+    <nb-card size="small">
+      <nb-card-header>Small card</nb-card-header>
+    </nb-card>
+  </div>
+  <div class="card-col">
+    <nb-card size="large">
+      <nb-card-header>Large card</nb-card-header>
+    </nb-card>
+  </div>
+</div>
