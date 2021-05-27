@@ -5,7 +5,7 @@
       <nb-card-body>
         <ngx-charts-pie-grid
         [results]="saleData"
-        [view]="[1000,200]">
+        [view]="[1000,300]">
       </ngx-charts-pie-grid>
       </nb-card-body>
     </nb-card>
@@ -13,8 +13,8 @@
       <nb-card-header>
         Table metrics
       </nb-card-header>
-      <nb-card-body>
-
+      <nb-list>
+        <nb-list-item>
         <table [nbTreeGrid]="data" equalColumnsWidth>
 
           <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
@@ -40,8 +40,8 @@
 
 
 
-
-      </nb-card-body>
+        </nb-list-item>
+      </nb-list>
     </nb-card>
   </div>
   <div class="card-col">

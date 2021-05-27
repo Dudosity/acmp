@@ -27,6 +27,7 @@ import {
   NbTreeGridModule,
 } from '@nebular/theme';
 
+import {HttpClientModule} from '@angular/common/http';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -34,6 +35,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { ComponentsComponent } from './components/components.component';
+import { TestApiComponent } from './test-api/test-api.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ComponentsComponent } from './components/components.component';
     LoginComponent,
     MainComponent,
     DashboardComponent,
-    ComponentsComponent
+    ComponentsComponent,
+    TestApiComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { ComponentsComponent } from './components/components.component';
     NbAccordionModule,
     NgxChartsModule,
     NbTreeGridModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
