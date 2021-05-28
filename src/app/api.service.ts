@@ -52,10 +52,15 @@ export class ApiService {
     return this.httpClient.get(this.url + '/m_types/get?token=' + this.token);
   }
 
-  public add_m_collection(name: string, value: string, date_hit: string, metric_type_id: number, monitoring_object_id: number, monitor_id: number) {
+  public add_m_collection(name: string, value: string, metric_type_id: number, monitoring_object_id: number, monitor_id: number) {
 
-    return this.httpClient.get(this.url + '/m_collection/add?name=' + name + '&value=' + value + '&date_hit=' + date_hit + '&metric_type_id=' +
+    return this.httpClient.get(this.url + '/m_collection/add?name=' + name + '&value=' + value + '&metric_type_id=' +
       metric_type_id + '&monitoring_object_id=' + monitoring_object_id + '&monitor_id=' + monitor_id + '&token=' + this.token);
+
+  }
+  public get_m_collection(monitor_id: number) {
+
+    return this.httpClient.get(this.url + '/m_collection/get?monitor_id=' + monitor_id + '&token=' + this.token);
 
   }
   public add_monitor( name: string,monitoring_object_id: number) {
@@ -69,9 +74,9 @@ export class ApiService {
     return this.httpClient.get(this.url + '/monitor/get?monitoring_object_id=' + monitoring_object_id + '&token=' + this.token);
 
   }
-  public add_monitoring_o( name: string, type: string, address: string, system: string) {
+  public add_monitoring_o( name: string, type: string, address: string, system: string,status:string) {
 
-    return this.httpClient.get(this.url + '/monitoring_o/add?name=' + name + '&type=' + type + '&address=' + address + '&system=' + system + '&token=' + this.token);
+    return this.httpClient.get(this.url + '/monitoring_o/add?name=' + name + '&type=' + type + '&address=' + address + '&system=' + system + '&status=' + status + '&token=' + this.token);
 
   }
 
@@ -83,7 +88,7 @@ export class ApiService {
 
   public add_r_script( name: string, condition: string, reaction: string, monitoring_object_id: number) {
 
-    return this.httpClient.get(this.url + '/r_script/add?name=' + name + '&condition=' + condition + '&reaction=' + reaction + '&monitoring_object_id=' + monitoring_object_id + '&token=' + this.token);
+    return this.httpClient.get(this.url + '/r_script/add?name=' + name + '&condition=' + condition + '&reaction=' + reaction + '&monitoring_object_id=' + monitoring_object_id  + '&token=' + this.token);
 
   }
 
@@ -104,4 +109,10 @@ export class ApiService {
 
   }
 
+  public add_project(name: string,description: string,monitoring_object_id:number) {
+    return this.httpClient.get(this.url + '/project/add?name='+name+'&description='+description+'&monitoring_object_id='+monitoring_object_id+'&token=' + this.token);
+  }
+  public get_project() {
+    return this.httpClient.get(this.url + '/project/get?token=' + this.token);
+  }
 }

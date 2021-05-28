@@ -20,12 +20,20 @@ interface FSEntry {
 
 
 export class ComponentsComponent implements OnInit {
-  saleData = [
-    { name: "Mobiles", value: 105000 },
-    { name: "Laptop", value: 55000 },
-    { name: "AC", value: 15000 },
-    { name: "Headset", value: 150000 },
-    { name: "Fridge", value: 20000 }
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Country';
+  showYAxisLabel = true;
+  yAxisLabel = 'Population';
+  Data = [
+    { name: "Njinx", value: 42 },
+    { name: "Red Hat", value: 64 },
+    { name: "Mysql", value: 51 }
   ];
   customColumn = 'name';
   defaultColumns = [ 'size', 'kind', 'items' ];
@@ -73,6 +81,11 @@ export class ComponentsComponent implements OnInit {
         { data: { name: 'secret-note.txt', kind: 'txt', size: '2 MB' } },
       ],
     },
+  ];
+  Datamem = [
+    { name: "Njinx", value: 70 },
+    { name: "Red Hat", value:54 },
+    { name: "Mysql", value: 81 }
   ];
   constructor() { }
 

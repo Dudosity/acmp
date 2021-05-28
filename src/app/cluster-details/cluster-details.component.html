@@ -1,0 +1,74 @@
+<div class="card-row">
+  <div class="card-col">
+    <nb-card size="giant">
+      <nb-card-header>Reaction scripts</nb-card-header>
+      <nb-list>
+        <nb-list-item>
+
+
+              <table [nbTreeGrid]="source">
+                <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+                <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+                <ng-container [nbTreeGridColumnDef]="customColumn">
+                  <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn}}</th>
+                  <td nbTreeGridCell *nbTreeGridCellDef="let row">
+
+                    <nb-tree-grid-row-toggle
+                      [expanded]="row.expanded"
+                      *ngIf="row.data.kind === 'dir'">
+                    </nb-tree-grid-row-toggle>
+
+                    {{row.data[customColumn]}}
+
+                  </td>
+                </ng-container>
+
+                <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+                  <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{column}}</th>
+                  <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
+                </ng-container>
+              </table>
+
+
+
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+
+
+
+
+  </div>
+  <div class="card-col">
+    <nb-card size="giant">
+      <nb-card-header>Reactions</nb-card-header>
+      <nb-card-body>
+
+        <nb-card status="success">
+          <nb-card-header>High CPU usage</nb-card-header>
+          <nb-card-body>
+            Notification to responsible person, is sent soccessfully.
+          </nb-card-body>
+          <nb-card-footer>Your application 1 - Njinx</nb-card-footer>
+        </nb-card>
+        <nb-card status="success">
+          <nb-card-header>High CPU usage</nb-card-header>
+          <nb-card-body>
+            Notification to responsible person, is sent soccessfully.
+          </nb-card-body>
+          <nb-card-footer>Your application 1 - Mysql</nb-card-footer>
+        </nb-card>
+        <nb-card status="warning">
+          <nb-card-header>Reaction 3</nb-card-header>
+          <nb-card-body>
+            Successful CORDON process message was not received.
+          </nb-card-body>
+          <nb-card-footer>Your application 1 - Njinx</nb-card-footer>
+        </nb-card>
+
+      </nb-card-body>
+    </nb-card>
+
+
+</div>

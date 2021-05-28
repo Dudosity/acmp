@@ -1,12 +1,65 @@
 <div class="card-row">
   <div class="card-col">
     <nb-card size="medium">
-      <nb-card-header>Metrics</nb-card-header>
+      <nb-card-header>CPU usage</nb-card-header>
       <nb-card-body>
-        <ngx-charts-pie-grid
-        [results]="saleData"
-        [view]="[1000,300]">
-      </ngx-charts-pie-grid>
+        <ngx-charts-bar-vertical
+        [results]="Data"
+        [view]="[1000,300]"
+        [legend]="showLegend">
+      </ngx-charts-bar-vertical>
+      </nb-card-body>
+    </nb-card>
+    <nb-card size="medium">
+      <nb-card-header>Mem usage</nb-card-header>
+      <nb-card-body>
+        <ngx-charts-bar-vertical
+          [results]="Datamem"
+          [view]="[1000,300]"
+          [legend]="showLegend">
+        </ngx-charts-bar-vertical>
+      </nb-card-body>
+    </nb-card>
+
+
+
+  </div>
+  <div class="card-col">
+    <nb-card size="medium">
+      <nb-card-header>CPU usage pie</nb-card-header>
+      <nb-card-body>
+        <ngx-charts-pie-chart
+        [results]="Data"
+        [legend]="true"
+        [legendTitle]="'Report'"
+        [view]="[1000,400]"
+        [labels]="true" >
+      </ngx-charts-pie-chart> </nb-card-body>
+    </nb-card>
+    <nb-card size="medium">
+      <nb-card-header>Mem usage pie</nb-card-header>
+      <nb-card-body>
+        <ngx-charts-pie-chart
+        [results]="Datamem"
+        [legend]="true"
+        [legendTitle]="'Report'"
+        [view]="[1000,400]"
+        [labels]="true" >
+      </ngx-charts-pie-chart> </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>
+<div class="card-row">
+  <div class="card-col">
+    <nb-card size="medium">
+      <nb-card-header>CPU usage</nb-card-header>
+      <nb-card-body>
+        <ngx-charts-bar-vertical
+          [results]="Data"
+          [view]="[1000,300]"
+          [legend]="showLegend">
+        </ngx-charts-bar-vertical>
       </nb-card-body>
     </nb-card>
     <nb-card size="medium">
@@ -15,28 +68,28 @@
       </nb-card-header>
       <nb-list>
         <nb-list-item>
-        <table [nbTreeGrid]="data" equalColumnsWidth>
+          <table [nbTreeGrid]="data" equalColumnsWidth>
 
-          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
-          <ng-container [nbTreeGridColumnDef]="customColumn">
-            <td nbTreeGridCell *nbTreeGridCellDef="let row">
+            <ng-container [nbTreeGridColumnDef]="customColumn">
+              <td nbTreeGridCell *nbTreeGridCellDef="let row">
 
-              <nb-tree-grid-row-toggle
-                [expanded]="row.expanded"
-                *ngIf="row.data.kind === 'dir'">
-              </nb-tree-grid-row-toggle>
+                <nb-tree-grid-row-toggle
+                  [expanded]="row.expanded"
+                  *ngIf="row.data.kind === 'dir'">
+                </nb-tree-grid-row-toggle>
 
-              {{row.data.name}}
+                {{row.data.name}}
 
-            </td>
-          </ng-container>
+              </td>
+            </ng-container>
 
-          <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-            <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
-          </ng-container>
+            <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+              <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+            </ng-container>
 
-        </table>
+          </table>
 
 
 
@@ -46,19 +99,19 @@
   </div>
   <div class="card-col">
     <nb-card size="medium">
-      <nb-card-header>Detailed pie</nb-card-header>
+      <nb-card-header>CPU usage pie</nb-card-header>
       <nb-card-body>
         <ngx-charts-pie-chart
-        [results]="saleData"
-        [legend]="true"
-        [legendTitle]="'Product Sale Report'"
-        [view]="[1000,400]"
-        [labels]="true" >
-      </ngx-charts-pie-chart> </nb-card-body>
+          [results]="Data"
+          [legend]="true"
+          [legendTitle]="'Report'"
+          [view]="[1000,400]"
+          [labels]="true" >
+        </ngx-charts-pie-chart> </nb-card-body>
     </nb-card>
   </div>
-</div>
 
+</div>
 <div class="card-row">
   <div class="card-col">
     <nb-card size="tiny">

@@ -25,6 +25,7 @@ import {
   NbMenuModule,
   NbAccordionModule,
   NbTreeGridModule,
+  NbAlertModule,
 } from '@nebular/theme';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -36,6 +37,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import { ComponentsComponent } from './components/components.component';
 import { TestApiComponent } from './test-api/test-api.component';
+import { ClusterDetailsComponent } from './cluster-details/cluster-details.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { TestApiComponent } from './test-api/test-api.component';
     MainComponent,
     DashboardComponent,
     ComponentsComponent,
-    TestApiComponent
+    TestApiComponent,
+    ClusterDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { TestApiComponent } from './test-api/test-api.component';
     NgxChartsModule,
     NbTreeGridModule,
     HttpClientModule,
+    NbAlertModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
