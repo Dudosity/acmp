@@ -1,0 +1,212 @@
+u = box.schema.space.create('user')
+
+u:format({
+{name = 'id', type = 'unsigned'},
+{name = 'login', type = 'string'},
+{name = 'password', type = 'string'},
+{name = 'email', type = 'string'},
+{name = 'token', type = 'string'}
+})
+
+u:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+u:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'login'}
+})
+u:insert{1, 'admin', 'admin','admin@admin.com','12345' }
+
+
+
+m = box.schema.space.create('monitoring_objects')
+
+m:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'type', type = 'string'},
+{name = 'address', type = 'string'},
+{name = 'system', type = 'string'},
+{name = 'creation_date', type = 'string'},
+{name = 'status', type = 'string'},
+})
+
+m:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+
+c = box.schema.space.create('contacts')
+
+c:format({
+{name = 'id', type = 'unsigned'},
+{name = 'email', type = 'string'},
+{name = 'address', type = 'string'},
+{name = 'phone_number', type = 'string'}
+})
+
+c:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+
+
+r = box.schema.space.create('responsible_persons')
+
+r:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'role', type = 'string'},
+{name = 'type', type = 'string'},
+{name = 'contact_id', type = 'unsigned'},
+{name = 'monitoring_object_id', type = 'unsigned'},
+
+})
+
+r:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+r:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'monitoring_object_id'}
+})
+
+
+
+rs = box.schema.space.create('reaction_scripts')
+
+rs:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'condirion', type = 'string'},
+{name = 'reaction', type = 'string'},
+{name = 'monitoring_object_id', type = 'unsigned'}
+})
+
+rs:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+rs:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'monitoring_object_id'}
+})
+
+
+
+
+rcts = box.schema.space.create('reactions')
+
+rcts:format({
+{name = 'id', type = 'unsigned'},
+{name = 'status', type = 'string'},
+{name = 'reaction_date', type = 'string'},
+{name = 'reaction_script_id', type = 'unsigned'},
+{name = 'reaction_details', type = 'string'}
+})
+
+rcts:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+rcts:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'reaction_script_id'}
+})
+
+
+
+
+mon = box.schema.space.create('monitor')
+
+mon:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'date', type = 'string'},
+{name = 'monitoring_object_id', type = 'unsigned'}
+})
+
+mon:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+mon:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'monitoring_object_id'}
+})
+
+
+
+
+mtrc = box.schema.space.create('metric_collection')
+
+mtrc:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'value', type = 'string'},
+{name = 'date_hit', type = 'string'},
+{name = 'metric_type_id', type = 'unsigned'},
+{name = 'monitoring_object_id', type = 'unsigned'},
+{name = 'monitor_id', type = 'unsigned'}
+})
+
+mtrc:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+mtrc:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'monitor_id'}
+})
+
+
+
+
+mt = box.schema.space.create('metric_types')
+
+mt:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'format', type = 'string'},
+{name = 'description', type = 'string'}
+})
+
+mt:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+
+prs = box.schema.space.create('projects_structure')
+
+prs:format({
+{name = 'id', type = 'unsigned'},
+{name = 'name', type = 'string'},
+{name = 'description', type = 'string'},
+{name = 'monitoring_object_id', type = 'unsigned'}
+})
+
+prs:create_index('primary', {
+type = 'hash',
+parts = {'id'}
+})
+
+prs:create_index('secondary', {
+type = 'tree',
+unique = false,
+parts = {'monitoring_object_id'}
+})
